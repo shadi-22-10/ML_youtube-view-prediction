@@ -1,0 +1,13 @@
+
+Percentage Error Summary
+========================
+Mean absolute % error:   404.27%
+Median absolute % error: 72.81%
+
+Percentiles:
+  25th percentile: 37.59%
+  75th percentile: 146.33%
+  90th percentile: 584.13%
+  95th percentile: 1206.17%
+
+Total samples: 7177

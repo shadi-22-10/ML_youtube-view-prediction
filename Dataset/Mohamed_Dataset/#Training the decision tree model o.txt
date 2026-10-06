@@ -1,0 +1,25 @@
+#Training the decision tree model on tabular data
+
+X = df[matrix_features].copy() #X is the feature matrix containing the features used to predict the views
+y=df["predicted_views"].astype(float) #y is a one column vector showing the predicted views for each video
+
+X = X.replace([np.inf, -np.inf], np.nan) #Turn all infinity values in the feature matrix to NaN
+
+X = X.fillna(X.median(numeric_only=True)) #Replace all missing values with the median of that column
+
+for column in X.columns:
+    if X[column].dtype==bool: 
+        X[column]=X[column].astype(int) #Turn categorical (boolean) columns into 1's and 0's 
+
+m= y.notna() #Boolean which checks which rows contain a target prediction (number of views) 
+
+X, y = X[m], y[m] #Drops all of the rows where the target prediction is missing
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+
+#Split data into 20% testing and 80% training
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model= DecisionTreeRegressor(random_state=42, max_depth=8) #Creates a decision tree with max_depth of 8 obtained through corss validation
+model.fit(X_train, y_train) #Learns patterns from the tabular data (training data)

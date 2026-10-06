@@ -1,0 +1,8 @@
+{
+  "test_mse_views": 28634026328210.56,
+  "test_rmse_views": 5351077.118507129,
+  "test_mae_views": 736578.0450468693,
+  "test_r2_views": 0.33590158756614374,
+  "test_pearson_log2": 0.783488618206344,
+  "test_spearman_log2": 0.77855137503206
+}
